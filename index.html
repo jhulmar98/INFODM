@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Registro Diario de Personal
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="card">
+
+            <div class="header">
+
+                <h1>
+                    Registro diario
+                </h1>
+
+                <p>
+                    Busque al personal por apellido o nombre y registre la incidencia.
+                </p>
+
+            </div>
+
+            <form id="formularioRegistro">
+
+                <div class="campo">
+
+                    <label for="nombreBusqueda">
+                        Buscar personal
+                    </label>
+
+                    <div class="autocompletado">
+
+                        <input
+                            id="nombreBusqueda"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="Escriba apellido o nombre">
+
+                        <div
+                            id="sugerencias"
+                            class="sugerencias oculto">
+                        </div>
+
+                    </div>
+
+                    <small>
+                        Escriba al menos tres letras y seleccione a la persona.
+                    </small>
+
+                </div>
+
+                <div
+                    id="datosPersonal"
+                    class="datos-personal oculto">
+
+                    <span>
+                        Personal seleccionado
+                    </span>
+
+                    <strong id="nombrePersonal">
+                        -
+                    </strong>
+
+                    <small id="detallePersonal">
+                        -
+                    </small>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="campo">
+
+                        <label for="fecha">
+                            Fecha
+                        </label>
+
+                        <input
+                            id="fecha"
+                            type="date"
+                            required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="turno">
+                            Turno
+                        </label>
+
+                        <select
+                            id="turno"
+                            required>
+
+                            <option value="">
+                                Seleccionar
+                            </option>
+
+                            <option value="T1">
+                                T1
+                            </option>
+
+                            <option value="T2">
+                                T2
+                            </option>
+
+                            <option value="T3">
+                                T3
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="campo campo-completo">
+
+                        <label for="incidencia">
+                            Incidencia
+                        </label>
+
+                        <select
+                            id="incidencia"
+                            required>
+
+                            <option value="">
+                                Seleccionar incidencia
+                            </option>
+
+                            <option value="FALTA">
+                                FALTA
+                            </option>
+
+                            <option value="CITA MEDICA">
+                                CITA MEDICA
+                            </option>
+
+                            <option value="DESCANSO MEDICO">
+                                DESCANSO MEDICO
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="acciones">
+
+                    <button
+                        id="btnGuardar"
+                        type="submit"
+                        disabled>
+
+                        Guardar registro
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div
+                id="mensaje"
+                class="mensaje">
+            </div>
+
+        </section>
+
+    </main>
+
+    <script
+        type="module"
+        src="app.js">
+    </script>
+
+</body>
+
+</html>
