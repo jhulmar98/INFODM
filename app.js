@@ -67,6 +67,8 @@ const fechaInput = document.getElementById("fecha");
 
 const turnoInput = document.getElementById("turno");
 
+const sectorInput = document.getElementById("sector");
+
 const incidenciaInput = document.getElementById(
     "incidencia"
 );
@@ -147,12 +149,6 @@ async function buscarPersonalPorNombre() {
 
     try {
 
-        /*
-           Busca en la nueva colección:
-
-           registro_nombre
-        */
-
         const consulta = query(
             collection(db, "registro_nombre"),
             orderBy("apellidos_nombres"),
@@ -163,11 +159,6 @@ async function buscarPersonalPorNombre() {
 
         const resultado = await getDocs(consulta);
 
-
-        /*
-           Evita mostrar resultados antiguos cuando
-           el usuario continúa escribiendo.
-        */
 
         if (busquedaActual !== numeroBusqueda) {
             return;
@@ -322,6 +313,8 @@ async function guardarRegistro(event) {
 
     const turno = turnoInput.value;
 
+    const sector = sectorInput.value;
+
     const incidencia = incidenciaInput.value;
 
 
@@ -337,10 +330,10 @@ async function guardarRegistro(event) {
     }
 
 
-    if (!fecha || !turno || !incidencia) {
+    if (!fecha || !turno || !sector || !incidencia) {
 
         mostrarMensaje(
-            "Complete fecha, turno e incidencia.",
+            "Complete fecha, turno, sector e incidencia.",
             "error"
         );
 
@@ -368,12 +361,6 @@ async function guardarRegistro(event) {
 
     try {
 
-        /*
-           Documento del día:
-
-           descansos_diarios / 2026-06-24
-        */
-
         const referenciaDia = doc(
             db,
             "descansos_diarios",
@@ -392,15 +379,6 @@ async function guardarRegistro(event) {
             }
         );
 
-
-        /*
-           Documento del personal dentro del día:
-
-           descansos_diarios
-               / 2026-06-24
-               / registros
-               / 00002746
-        */
 
         const referenciaRegistro = doc(
             db,
@@ -437,6 +415,8 @@ async function guardarRegistro(event) {
             fecha: fecha,
 
             turno: turno,
+
+            sector: sector,
 
             incidencia: incidencia,
 
